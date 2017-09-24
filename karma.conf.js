@@ -1,5 +1,6 @@
 // Karma configuration
 // Generated on Sat Sep 23 2017 19:34:06 GMT+0900 (JST)
+const webpackConfig = require('./webpack.config');
 
 module.exports = function(config) {
   config.set({
@@ -16,7 +17,7 @@ module.exports = function(config) {
     // list of files / patterns to load in the browser
     files: [
       // 'src/*.js',
-      'spec/src/*.js'
+      'spec/src/*.ts'
     ],
 
 
@@ -28,23 +29,11 @@ module.exports = function(config) {
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {
-        'src/*.js': ['coverage', 'webpack', 'sourcemap'],
-        'spec/src/*.js': ['webpack', 'sourcemap']
+        'src/*.ts': ['coverage', 'webpack', 'sourcemap'],
+        'spec/src/*.ts': ['webpack', 'sourcemap']
     },
 
-    // Webpack settings.
-    webpack: {
-        devtool: 'inline-source-map',
-        module: {
-            loaders: [
-                {
-                    test: /\.js$/,
-                    exclude: /(spec|node_modules)/,
-                    loader: 'istanbul-instrumenter-loader'
-                }
-            ]
-        }
-    },
+    webpack: webpackConfig,
 
     // test results reporter to use
     // possible values: 'dots', 'progress'
@@ -59,7 +48,8 @@ module.exports = function(config) {
         dir: 'report',
         reporters: [
             { type: 'html' },
-            { type: 'cobertura' }
+            { type: 'cobertura' },
+            { type: 'text-summary' },
         ]
     },
 
