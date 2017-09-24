@@ -15,7 +15,7 @@ module.exports = function(config) {
 
     // list of files / patterns to load in the browser
     files: [
-      'src/*.js',
+      // 'src/*.js',
       'spec/src/*.js'
     ],
 
@@ -28,9 +28,23 @@ module.exports = function(config) {
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {
-      'src/*.js': ['coverage']
+        'src/*.js': ['coverage', 'webpack', 'sourcemap'],
+        'spec/src/*.js': ['webpack', 'sourcemap']
     },
 
+    // Webpack settings.
+    webpack: {
+        devtool: 'inline-source-map',
+        module: {
+            loaders: [
+                {
+                    test: /\.js$/,
+                    exclude: /(spec|node_modules)/,
+                    loader: 'istanbul-instrumenter-loader'
+                }
+            ]
+        }
+    },
 
     // test results reporter to use
     // possible values: 'dots', 'progress'
