@@ -15,6 +15,7 @@
     "karma": "^1.7.1",
     "karma-chrome-launcher": "^2.2.0",
     "karma-coverage": "^1.1.1",
+    "karma-html2js-preprocessor": "^1.1.0",
     "karma-jasmine": "^1.1.0",
     "karma-junit-reporter": "^1.2.0",
     "karma-mocha-reporter": "^2.2.4",
@@ -22,8 +23,12 @@
     "karma-sourcemap-loader": "^0.3.7",
     "karma-typescript-preprocessor": "^0.3.1",
     "karma-webpack": "^2.0.4",
+    "sinon": "^4.0.0",
     "ts-loader": "^2.3.7",
     "typescript": "^2.5.2",
     "webpack": "^3.6.0"
+  },
+  "dependencies": {
+    "express": "^4.15.4"
   }
 }
